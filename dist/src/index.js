@@ -22,8 +22,8 @@ app.get('/api/v1/', async (request, response) => {
     response.send('<h1>E-commerce Api</h1>');
 });
 //Serves Api on standard 8080 port
-app.listen(8080, () => {
-    console.log('Server open and listening on http://localhost:8080');
+app.listen(process.env.PORT || 8080, () => {
+    console.log('Server open and listening on http://localhost:8080 or Herokus default port');
 });
 export default app;
 //# sourceMappingURL=index.js.map
