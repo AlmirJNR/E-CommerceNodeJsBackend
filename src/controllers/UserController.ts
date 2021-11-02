@@ -16,10 +16,18 @@ router.post('/register', async (request, response) => {
 
 	if (databaseResult.rowCount !== 0) {
 		response.sendStatus(400);
+		return;
 	}
 	else {
-		response.json((await client.query('INSERT INTO usuarios(nome, email, senha) VALUES ($1, $2, $3);',
-		[request.body.name, request.body.email, request.body.password])).rowCount);
+		const databaseResult = await client.query('INSERT INTO usuarios(nome, email, senha) VALUES ($1, $2, $3);',
+		[request.body.name, request.body.email, request.body.password]);
+
+		if (databaseResult.rowCount === 1) {
+			response.sendStatus(201);
+		}
+		else {
+			response.sendStatus(500);
+		}
 	}
 });
 
