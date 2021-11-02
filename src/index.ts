@@ -29,8 +29,8 @@ app.get('/api/v1/', async (request, response) => {
 });
 
 //Serves Api on standard 8080 port
-app.listen(8080, () => {
-	console.log('Server open and listening on http://localhost:8080');
+app.listen(process.env.PORT || 8080, () => {
+	console.log('Server open and listening on http://localhost:8080 or Herokus default port');
 });
 
 export default app;
