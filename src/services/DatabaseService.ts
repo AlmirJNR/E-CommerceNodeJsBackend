@@ -7,11 +7,11 @@ let isConnected = false;
 
 /** This variable is the instance of the database */
 export const client = new Client({
-	user: 'postgres',
-	host: 'localhost',
-	database: 'postgres',
-	password: 'password',
-	port: 5432,
+	user: process.env.HEROKU_USER,
+	host: process.env.HEROKU_HOST,
+	database: process.env.HEROKU_DATABASE,
+	password: process.env.HEROKU_PASSWORD,
+	port: Number(process.env.DATABASE_HEROKU_PORT)
 });
 
 /** This function connects to the database only once */
